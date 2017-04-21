@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+
+# Exit if any subcommand fails
+set -e
+
+# Unset CDPATH to avoid issues with make later on
+unset CDPATH
+
+
+if [ -z "$CI" ]; then
+  echo "Removing previous build artifacts"
+  rm -rf node_modules
+  rm -rf deps _build
+fi
+
+asdf install
+
+echo "Installing dependencies and compiling"
+mix local.hex --force
+mix local.rebar --force
+mix deps.get
+mix deps.compile
+mix compile
+
+# Set up database
+echo "Setting up the database"
+mix ecto.reset
+MIX_ENV="test" mix ecto.reset
+
+# Grab JS dependencies from NPM
+echo "Installing npm dependencies"
+npm install --progress=false
+
+echo "Compiling assets"
+node_modules/brunch/bin/brunch build
