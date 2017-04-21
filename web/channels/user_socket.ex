@@ -1,5 +1,6 @@
 defmodule Talk.UserSocket do
   use Phoenix.Socket
+  @moduledoc false
 
   ## Channels
   # channel "room:*", Talk.RoomChannel

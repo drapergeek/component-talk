@@ -1,4 +1,5 @@
 defmodule Talk.Router do
+  @moduledoc false
   use Talk.Web, :router
 
   pipeline :browser do

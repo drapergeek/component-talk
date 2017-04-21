@@ -1,4 +1,6 @@
 defmodule Talk.ErrorView do
+  @moduledoc false
+
   use Talk.Web, :view
 
   def render("404.html", _assigns) do

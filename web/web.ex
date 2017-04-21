@@ -1,21 +1,5 @@
 defmodule Talk.Web do
-  @moduledoc """
-  A module that keeps using definitions for controllers,
-  views and so on.
-
-  This can be used in your application as:
-
-      use Talk.Web, :controller
-      use Talk.Web, :view
-
-  The definitions below will be executed for every view,
-  controller, etc, so keep them short and clean, focused
-  on imports, uses and aliases.
-
-  Do NOT define functions inside the quoted expressions
-  below.
-  """
-
+  @moduledoc false
   def model do
     quote do
       use Ecto.Schema
@@ -52,6 +36,7 @@ defmodule Talk.Web do
       import Talk.Router.Helpers
       import Talk.ErrorHelpers
       import Talk.Gettext
+      import Talk.Component
     end
   end
 

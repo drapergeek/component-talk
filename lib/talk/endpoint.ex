@@ -1,4 +1,5 @@
 defmodule Talk.Endpoint do
+  @moduledoc false
   use Phoenix.Endpoint, otp_app: :talk
 
   socket "/socket", Talk.UserSocket
